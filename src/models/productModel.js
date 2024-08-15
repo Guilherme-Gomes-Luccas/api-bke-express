@@ -1,18 +1,12 @@
-const getAll = () => {
-    return [
-        {
-            id: 1,
-            name: "Ketchup",
-        },
-        {
-            id: 2,
-            name: "Mostarda",
-        }
-    ]
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
+
+export const getAll = async () => {
+    const products = await prisma.product.findMany()
+    return products
 }
 
 export const create = () => {
 
 }
-
-export default {getAll, create}

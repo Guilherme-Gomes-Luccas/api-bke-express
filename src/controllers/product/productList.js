@@ -1,9 +1,9 @@
-import userModel from '../../models/productModel.js'
+import { getAll } from '../../models/productModel.js'
 
-const productList = (req, res) => {
-    const products = userModel.getAll()
+const productList = async (req, res) => {
+    const product = await getAll()
 
-    res.json(products)
+    res.json(product)
 }
 
 export default productList

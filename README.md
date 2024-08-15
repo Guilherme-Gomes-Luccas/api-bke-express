@@ -20,3 +20,10 @@ git config --global user.name "seu nome"
 git config --global user.email "seuemail@gmail.com"
 git remote add origin https://github.com/seuGithub/seuProjeto.g
 ```
+
+### Prisma
+
+```
+npm i prisma -D (instala prisma com dependência de desenvolvimento)
+npx prisma init (inicializa o prisma no projeto prisma/schema.prisma e .env)
+```
