@@ -8,11 +8,11 @@ import deleteProduct from '../controllers/product/deleteProduct.js'
 
 const router = express.Router()
 
-router.get('/', productById)
-router.get('/list', productList)
 router.post('/', addProduct)
-router.put('/', updateProduct)
-router.patch('/', editProduct)
-router.delete('/', deleteProduct)
+router.get('/list', productList)
+router.get('/:id', productById)
+router.put('/:id', editProduct)
+router.patch('/:id', updateProduct)
+router.delete('/:id', deleteProduct)
 
 export default router

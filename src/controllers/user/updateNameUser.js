@@ -1,10 +1,10 @@
 import { update } from "../../models/userModel.js"
 
-const editUser = async (req, res) =>{
+const editNameUser = async (req, res) =>{
     const {id} = req.params
-    const user = req.body
-    
-    user.id = +id
+    const { name } = req.body
+
+    const user = { id: +id, name }
 
     const result = await update(user)
 
@@ -20,4 +20,4 @@ const editUser = async (req, res) =>{
     })
 }
 
-export default editUser
+export default editNameUser
