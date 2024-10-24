@@ -6,10 +6,12 @@ import welcome from './controllers/welcome.js'
 import routeNotFounded from './controllers/routeNotFounded.js'
 import errorHandler from './controllers/middlewares/errorHandler.js'
 import { PORT, HOST, ENVIRONMENT } from './config.js'
+import cors from 'cors'
 
 const app = express()
 
 app.use(logger)
+app.use(cors())
 
 app.use(express.json())
 
