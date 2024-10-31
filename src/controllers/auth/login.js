@@ -1,6 +1,8 @@
 import { v4 as uuid } from "uuid";
 import bcrypt from "bcrypt";
 import { getByEmail, validateUserToLogin} from "../../models/userModel.js"
+import jwt from "jsonwebtoken"
+import { SECRET_KEY } from "../../config.js";
 
 const login = async (req, res) =>{
     const login = req.body
@@ -28,6 +30,11 @@ const login = async (req, res) =>{
             error: "Email ou senha inválida! (senha inválida)"
         })
     }
+
+    const token = jwt.sign({ name: user.name, publicID: user.public_id }, SECRET_KEY, { expiresIn: 60 * 5 })
+
+    console.log(token);
+    return res.json({token})
 
     console.log(user);
     return res.json({user})
