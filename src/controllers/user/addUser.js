@@ -1,4 +1,6 @@
 import { create, validateUserToCreate } from "../../models/userModel.js";
+import { v4 as uuid } from "uuid";
+import bcrypt from "bcrypt";
 
 const addUser = async (req, res, next) =>{
     try {
@@ -13,6 +15,9 @@ const addUser = async (req, res, next) =>{
                 fieldErrors: userValidated.error.flatten().fieldErrors
             })
         }
+
+        userValidated.data.public_id = uuid()
+        userValidated.data.pass = bcrypt.hashSync(userValidated.data.pass, 10)
 
         const result = await create(userValidated.data)
 
